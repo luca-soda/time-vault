@@ -9,16 +9,11 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from "path";
-import { app, BrowserWindow, shell, ipcMain } from "electron";
+import { app, BrowserWindow, shell } from "electron";
 import { autoUpdater } from "electron-updater";
 import log from "electron-log";
 import MenuBuilder from "./menu";
 import { resolveHtmlPath } from "./util";
-import { dialog } from "electron";
-import NodeRSA from "node-rsa";
-import fs from "fs";
-import axios from "axios";
-import moment from "moment";
 import './encrypt';
 import './decrypt';
 
@@ -70,12 +65,13 @@ const createWindow = async () => {
 
     mainWindow = new BrowserWindow({
         show: false,
-        width: 1024,
-        height: 728,
+        width: 400,
+        height: 500,
         icon: getAssetPath("icon.png"),
         webPreferences: {
             preload: app.isPackaged ? path.join(__dirname, "preload.js") : path.join(__dirname, "../../.erb/dll/preload.js"),
         },
+        resizable: false
     });
 
     mainWindow.loadURL(resolveHtmlPath("index.html"));
