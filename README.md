@@ -1,6 +1,8 @@
 
 # Time Vault
 
+<img src='https://github.com/luca-soda/time-vault/blob/main/screenshots/time-vault.png?raw=true'>
+
 Time Vault is an Electron-based example use case utilizing the [Time-Lock microservice](https://github.com/luca-soda/time-lock), built using `electron-react-boilerplate`. This project serves as a demonstrative example of how the Time-Lock service can be integrated into applications for secure file encryption with future unlock capabilities.
 
 **The project has hardcoded localhosts for the Time-Lock service in encrypt.ts and decrypt.ts files as it's only a demonstrative example.**
