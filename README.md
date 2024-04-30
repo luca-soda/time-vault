@@ -3,6 +3,8 @@
 
 Time Vault is an Electron-based example use case utilizing the Time-Lock microservice, built using `electron-react-boilerplate`. This project serves as a demonstrative example of how the Time-Lock service can be integrated into applications for secure file encryption with future unlock capabilities.
 
+**The project has hardcoded localhosts for the Time-Lock service in encrypt.ts and decrypt.ts files as it's only a demonstrative example.**
+
 ## Features
 
 - **File Encryption**: Users can select a file and a target date. The application encrypts the file using an RSA public key provided by Time-Lock, embedding the necessary secrets to reconstruct the public key within the encrypted file itself.
@@ -46,3 +48,4 @@ Before you begin, ensure you have met the following requirements:
 3. Confirm to decrypt the file.
 
 Note: The decryption process will be successful after the specified date has passed.
+
