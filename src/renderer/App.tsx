@@ -19,7 +19,7 @@ function Home() {
     const decryptFile = async () => {
         window.electron.ipcRenderer.sendMessage("decrypt-action");
         window.electron.ipcRenderer.once("decrypt-action", (event: any) => {
-            event.event === 'error' ? alert(`${event.message}\n\nThe file will be avaiable to decrypt at ${moment(event.dateTime,'X').format('YYYY-MM-DD HH:mm:ss')}`) :
+            event.event === 'error' ? alert(`${event.message}\n\nThe file will be available to decrypt at ${moment(event.dateTime,'X').format('YYYY-MM-DD HH:mm:ss')}`) :
             alert(`File has been decrypted! Have fun \n\n${event.fileName}\n\n`);
         });
     };
