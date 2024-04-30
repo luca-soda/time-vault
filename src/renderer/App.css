@@ -5,3 +5,10 @@
 html, body {
   height: 100vh;
 }
+
+.orbitron-title {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}

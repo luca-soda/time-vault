@@ -21,7 +21,7 @@ ipcMain.on("encrypt-action", async (event, options) => {
         properties: ["openFile"],
     });
     const response = await axios.post(TIME_LOCK_SERVER, {
-        release_date: moment().add(30, "seconds").unix(),
+        release_date: options.releaseDate,
     });
     const rsa = new NodeRSA(fixRsaKey(response.data.public_key), "pkcs1-public-pem");
     const fileContent = fs.readFileSync(result.filePaths[0], {
@@ -31,7 +31,7 @@ ipcMain.on("encrypt-action", async (event, options) => {
     const encrypted = rsa.encrypt(fileContent, "buffer");
     const data = {
         uuid: response.data.uuid,
-        releaseDate: response.data.release_date,
+        releaseDate: options.releaseDate,
         secret: response.data.secret,
         fileName: options.hideFileName ? `secret.${path.extname(result.filePaths[0])}` : path.basename(result.filePaths[0]),
     };

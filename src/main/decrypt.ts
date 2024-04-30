@@ -29,11 +29,11 @@ ipcMain.on("decrypt-action", async (event) => {
             secret: data.secret,
         });
     } catch (e) {
-        event.reply("decrypt-action", "Too soon to decrypt the file. Please try again later.");
+        event.reply("decrypt-action", {event: 'error', message: "Too soon to decrypt the file. Please try again later.", dateTime: data.releaseDate});
         return;
     }
     const rsa = new NodeRSA(response!.data.private_key, "pkcs8-private-pem");
     const decrypted = rsa.decrypt(bin, "buffer");
     fs.writeFileSync(path.join(path.dirname(result.filePaths[0]),data.fileName), decrypted);
-    event.reply("decrypt-file-dialog", result.filePaths);
+    event.reply("decrypt-action", { event: 'success', fileName: path.basename(result.filePaths[0]) });
 });
